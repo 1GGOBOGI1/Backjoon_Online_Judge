@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Algos_02_02", "Algos_02_02\Algos_02_02.vcxproj", "{798B7417-FEFA-4E6A-A9EC-C5B8E36BDDD9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{798B7417-FEFA-4E6A-A9EC-C5B8E36BDDD9}.Debug|x64.ActiveCfg = Debug|x64
+		{798B7417-FEFA-4E6A-A9EC-C5B8E36BDDD9}.Debug|x64.Build.0 = Debug|x64
+		{798B7417-FEFA-4E6A-A9EC-C5B8E36BDDD9}.Debug|x86.ActiveCfg = Debug|Win32
+		{798B7417-FEFA-4E6A-A9EC-C5B8E36BDDD9}.Debug|x86.Build.0 = Debug|Win32
+		{798B7417-FEFA-4E6A-A9EC-C5B8E36BDDD9}.Release|x64.ActiveCfg = Release|x64
+		{798B7417-FEFA-4E6A-A9EC-C5B8E36BDDD9}.Release|x64.Build.0 = Release|x64
+		{798B7417-FEFA-4E6A-A9EC-C5B8E36BDDD9}.Release|x86.ActiveCfg = Release|Win32
+		{798B7417-FEFA-4E6A-A9EC-C5B8E36BDDD9}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC44744B-552C-4EB8-8BD1-5481C4F5FE0D}
+	EndGlobalSection
+EndGlobal
