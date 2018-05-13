@@ -3,7 +3,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-
 int push(int x, int *y);
 int pop(int *y);
 int size(int *y);
@@ -13,7 +12,6 @@ int back(int *y);
 
 int *stack = { 0 }, Front = -1, Rear = -1;
 
-
 int main(void) {
 	int N = 0, num = 0, j = 0;
 	char str[6], c = 0;
@@ -21,11 +19,15 @@ int main(void) {
 	scanf("%d", &N);
 	stack = (int*)malloc(sizeof(int)*N);
 	for (int i = 0;i < N;i++) {
+
 		scanf("%s", str);
+
 		switch (strlen(str)) {
+
 		case 3:
 			printf("%d\n", pop(stack));
 			break;
+
 		case 4:
 			if (!(strcmp(str, "push"))) {
 				scanf("%d\n", &num);
@@ -34,6 +36,7 @@ int main(void) {
 			else if(!strcmp(str, "size")) printf("%d\n", size(stack));
 			else printf("%d\n", back(stack));
 			break;
+
 		case 5:
 			if (!(strcmp(str, "empty"))) {
 				printf("%d\n", empty(stack));
@@ -41,8 +44,6 @@ int main(void) {
 			else printf("%d\n", front(stack));
 			break;
 		}
-
-
 	}
 
 	free(stack);
@@ -80,7 +81,6 @@ int front(int *y) {
 	if (Rear == Front) return -1;
 	else return *(y + Front + 1);
 }
-
 
 int back(int *y) {
 	if (Rear == Front) return -1;

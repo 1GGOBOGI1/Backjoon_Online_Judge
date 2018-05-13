@@ -1,0 +1,6 @@
+﻿  1026.c
+c:\users\kjh10\desktop\beakjoon_online_judge\1026\1026\1026.c(24): warning C4090: '함수': 'const' 한정자가 서로 다릅니다.
+c:\users\kjh10\desktop\beakjoon_online_judge\1026\1026\1026.c(24): warning C4028: 정식 매개 변수 1이(가) 선언과 다릅니다.
+c:\users\kjh10\desktop\beakjoon_online_judge\1026\1026\1026.c(24): warning C4028: 정식 매개 변수 2이(가) 선언과 다릅니다.
+  1026.vcxproj -> C:\Users\kjh10\Desktop\Beakjoon_Online_Judge\1026\Debug\1026.exe
+  1026.vcxproj -> C:\Users\kjh10\Desktop\Beakjoon_Online_Judge\1026\Debug\1026.pdb (Partial PDB)
