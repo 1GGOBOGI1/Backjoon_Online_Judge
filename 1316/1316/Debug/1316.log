@@ -1,4 +1,0 @@
-﻿  1316.c
-c:\users\kjh10\desktop\beakjoon_online_judge\1316\1316\1316.c(12): warning C4047: '초기화 중': 'char'의 간접 참조 수준이 'void *'과(와) 다릅니다.
-  1316.vcxproj -> C:\Users\kjh10\Desktop\Beakjoon_Online_Judge\1316\Debug\1316.exe
-  1316.vcxproj -> C:\Users\kjh10\Desktop\Beakjoon_Online_Judge\1316\Debug\1316.pdb (Partial PDB)
