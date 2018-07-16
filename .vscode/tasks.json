@@ -41,9 +41,10 @@
             "label": "save and compile for C",
             "command": "gcc",
             "args": [
+                "-g",
                 "${file}",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}.exe"
             ],
             "group": "build",
 

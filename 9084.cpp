@@ -1,29 +1,38 @@
-#include<iostream>
-#include<string>
+#include <iostream>
+#include <string>
 using namespace std;
 
 int test[21];
 
-int main(){
+int main()
+{
 	int T;
-	cin>>T;
-	for(int i=0;i<T;i++){
+	cin >> T;
+	for (int i = 0; i < T; i++)
+	{
 		int N;
-		int num=0;
-		
-		cin>>N;
+		int num = 0;
+		cout << "T" << endl;
+		cin >> N;
+		fflush(stdin);
 		string test_case;
-		getline(cin,test_case);
-		for(int j=0,k=0;j<test_case.length();j++){
-			if(test_case[i]==' '){
+		getline(cin, test_case);
+		for (int j = 0, k = 0; j < test_case.length()+1; j++)
+		{
+			if(j==test_case.length()){
 				test[k]=num;
-				k++;
-				num=0;
 			}
-			else{
-				num=num*10+test_case[i];
+			if (test_case[j] == ' ')
+			{
+				test[k] = num;
+				k++;
+				num = 0;
+			}
+			else
+			{
+				num = num * 10 + (test_case[j]-'0');
 			}
 		}
-		for(int j=0;j<N;j++)cout<<test[j];
+		
 	}
 }
