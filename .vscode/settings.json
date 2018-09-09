@@ -39,6 +39,7 @@
         "xtr1common": "cpp",
         "xutility": "cpp",
         "queue": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "stdio.h": "c"
     }
 }
