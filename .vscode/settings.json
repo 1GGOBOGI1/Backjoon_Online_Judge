@@ -40,6 +40,20 @@
         "xutility": "cpp",
         "queue": "cpp",
         "random": "cpp",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "array": "cpp",
+        "*.tcc": "cpp",
+        "cctype": "cpp",
+        "clocale": "cpp",
+        "cwctype": "cpp",
+        "unordered_map": "cpp",
+        "fstream": "cpp",
+        "functional": "cpp",
+        "numeric": "cpp",
+        "sstream": "cpp",
+        "tuple": "cpp"
+    },
+    "files.exclude": {
+        "*.exe":true
     }
 }
