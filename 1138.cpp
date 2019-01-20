@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int N;
+    cin >> N;
+    int P[N], ANS[N] = {0};
+    for (int i = 0; i < N; i++)
+        cin >> P[i];
+    for (int i = 0; i < N; i++)
+    {
+        int cnt = 0, j = 0;
+        for (; cnt != P[i] + 1; j++)
+            if (ANS[j] == 0)
+                cnt++;
+        ANS[j - 1] = i + 1;
+    }
+    for (int i = 0; i < N; i++)
+        cout << ANS[i] << " ";
+}
