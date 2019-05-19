@@ -1,21 +1,21 @@
 {
-// tasks.json 형식에 대한 설명서는 
+    // tasks.json 형식에 대한 설명서는 
     // https://go.microsoft.com/fwlink/?LinkId=733558의 내용을 참조하세요.
     "version": "2.0.0",
     "tasks": [
         {
             "type": "shell",
             "label": "g++.exe build active file",
-            "command": "C:\\Program Files\\mingw-w64\\x86_64-7.2.0-posix-seh-rt_v5-rev1\\mingw64\\bin\\g++.exe",
+            "command": "g++",
             "args": [
                 "-g",
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
-            "options": {
-                "cwd": "C:\\Program Files\\mingw-w64\\x86_64-7.2.0-posix-seh-rt_v5-rev1\\mingw64\\bin"
-            },
+            // "options": {
+            //     "cwd": "C:\\Program Files\\mingw-w64\\x86_64-7.2.0-posix-seh-rt_v5-rev1\\mingw64\\bin"
+            // },
             "problemMatcher": [
                 "$gcc"
             ],
@@ -27,21 +27,36 @@
         {
             "type": "shell",
             "label": "gcc.exe build active file",
-            "command": "C:\\Program Files\\mingw-w64\\x86_64-7.2.0-posix-seh-rt_v5-rev1\\mingw64\\bin\\gcc.exe",
+            "command": "gcc",
             "args": [
                 "-g",
                 "${file}",
                 "-o",
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
-            "options": {
-                "cwd": "C:\\Program Files\\mingw-w64\\x86_64-7.2.0-posix-seh-rt_v5-rev1\\mingw64\\bin"
-            },
+            // "options": {
+            //     "cwd": "C:\\Program Files\\mingw-w64\\x86_64-7.2.0-posix-seh-rt_v5-rev1\\mingw64\\bin"
+            // },
             "problemMatcher": [
                 "$gcc"
             ],
             "group": {
                 "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "type": "shell",
+            "label": "Run",
+            "command": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            // "options": {
+            //     "cwd": "C:\\Program Files\\mingw-w64\\x86_64-7.2.0-posix-seh-rt_v5-rev1\\mingw64\\bin"
+            // },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "test",
                 "isDefault": true
             }
         }

@@ -1,3 +1,10 @@
 *.exe
 *.vscode
 test.c
+*.pdf
+*.pptx
+.gitignore
+.vscode/tasks.json
+.vscode/launch.json
+test2.cpp
+test1.c
