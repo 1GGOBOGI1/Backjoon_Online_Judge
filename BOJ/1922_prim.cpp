@@ -31,7 +31,7 @@ void prim_with_priority_queue(int start_vertex, vector<edge> *graph)
     // start_vertex에서 뻗은 모든 edge를 큐에 넣음
     for (int i = 0; i < graph[start_vertex].size(); i++)
     {
-        q.push(edge(graph[start_vertex][i].first, graph[start_vertex][i].second));
+        q.push(graph[start_vertex][i]);
     }
 
     // prim에 의해 선택될 모든 edge의 weight의 합을 나타내는 total_weight
@@ -52,7 +52,7 @@ void prim_with_priority_queue(int start_vertex, vector<edge> *graph)
         // 새롭게 방문한 정점에서 뻗은 모든 edge를 큐에 넣음
         for (int i = 0; i < graph[x.first].size(); i++)
         {
-            q.push(edge(graph[x.first][i].first, graph[x.first][i].second));
+            q.push(graph[x.first][i]);
         }
     }
 
@@ -70,7 +70,7 @@ int main()
         int from, to, weight;
         cin >> from >> to >> weight;
 
-        //양방향 그래프이므로 양쪽으로 edge를 저장
+        //무방향 그래프이므로 양쪽으로 edge를 저장
         graph[from].push_back(edge(to, weight));
         graph[to].push_back(edge(from, weight));
     }

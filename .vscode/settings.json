@@ -1,6 +1,7 @@
 {
     "files.exclude": {
-        "*.exe": true
+        "*.exe": true,
+        "**/*.exe": true
     },
     "files.associations": {
         "array": "cpp",
@@ -33,7 +34,9 @@
         "type_traits": "cpp",
         "tuple": "cpp",
         "typeinfo": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "iomanip": "cpp",
+        "chrono": "cpp"
     },
     "C_Cpp.errorSquiggles": "Disabled"
 }
