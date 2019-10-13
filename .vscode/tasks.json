@@ -84,7 +84,7 @@
                     "-g",
                     "${file}",
                     "-o",
-                    "${fileDirname}/build/${fileBasenameNoExtension}"
+                    "/Users/kimjuhui/Documents/Algorithm/build/${fileBasenameNoExtension}"
                 ],
                 "options": {
                     "cwd": "/usr/bin"
@@ -99,9 +99,11 @@
             },
             {
                 "label": "execute file",
-                "command": "cd ${fileDirname}/build && ./${fileBasenameNoExtension}",
-                "group": "test"
-    
+                "command": "cd /Users/kimjuhui/Documents/Algorithm/build && ./${fileBasenameNoExtension}",
+                "group": {
+                    "kind":"test",
+                    "isDefault": true
+                }
             }
         ]
     }
