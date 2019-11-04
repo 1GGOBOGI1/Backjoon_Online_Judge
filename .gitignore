@@ -8,4 +8,5 @@ test.c
 .vscode/launch.json
 .DS_Store
 build/
-test.cpp
+*/test.cpp
+
