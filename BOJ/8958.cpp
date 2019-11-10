@@ -11,7 +11,6 @@ int main()
     while (T--)
     {
         score = 0;
-
         cin >> input;
 
         for (int i = 0; i < input.length();i++)
@@ -22,12 +21,14 @@ int main()
             }
             else
             {
-                score += cont;
+                for (int j = 1; j <= cont;j++)
+                    score += j;
                 cont = 0;
             }
         }
 
-        score += cont;
+        for (int j = 1; j <= cont; j++)
+            score += j;
         cont = 0;
 
         cout << score << endl;
