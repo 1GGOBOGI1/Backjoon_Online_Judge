@@ -4,8 +4,8 @@ using namespace std;
 
 void check(bool* selfnumber,int i)
 {
-    cout << "i = " << i << "\n";
-    if (i > 10000)
+    //cout << "i = " << i << "\n";
+    if (i > 10001)
         return;
 
     int num = i;
@@ -14,25 +14,26 @@ void check(bool* selfnumber,int i)
         num += i % 10;
         i = i / 10;
     }
-    if(num>10000)
+    if(num>10001)
         return;
     if(selfnumber[num]==false)
         return;
-    cout << "num = " << num << "\n";
+    //cout << "num = " << num << "\n";
     selfnumber[num] = false;
     check(selfnumber,num);
-    return;
 }
 
 int main()
 {
-    bool *selfnumber;
-    selfnumber = new bool[100001];
-    memset(selfnumber, true, sizeof(*selfnumber));
-
-    check(selfnumber, 1);
-
+    bool selfnumber[10001];
+    memset(selfnumber, true, sizeof(selfnumber));
+    // selfnumber[i] = true 이면 생성자가 없는 것
     for (int i = 1; i < 10001; i++)
         if(selfnumber[i])
+            check(selfnumber, i);
+
+    int ans = 0;
+    for (int i = 1; i < 10001; i++)
+        if (selfnumber[i])
             cout << i << "\n";
 }

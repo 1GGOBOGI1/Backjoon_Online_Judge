@@ -1,25 +1,26 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-long long int calc(long long int a,long long int b,long long c)
+long long solve(int A, int B, int C)
 {
-    if(b==0)
+    if(B == 1)
+        return A % C;
+    else if (B == 0)
         return 1;
-    else if(b==1)
-        return a%c;
-    else if(b%2 == 0)
-    {
-        long long int tmp = calc(a, b / 2)%c;
-        return tmp * tmp;
-    }
+
+    if(B%2)
+        return ((((solve(A, B / 2, C) % C) * (solve(A, B / 2, C) % C)) % C) * (A % C)) % C;
     else
-        return a * calc(a, b - 1)%c;
+    {
+        return ((solve(A, B / 2, C) % C) * (solve(A, B / 2, C) % C)) % C;
+    }
 }
 
 int main()
 {
     int A, B, C;
-    cin >> A >> B>>C;
+    cin >> A >> B >> C;
 
-    cout << calc(A, B,C);
+    // (A^B)%C
+    cout << solve(A, B, C);
 }
