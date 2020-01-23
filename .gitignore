@@ -6,5 +6,7 @@ test.c
 .gitignore
 .vscode/tasks.json
 .vscode/launch.json
-test2.cpp
-test1.c
+.DS_Store
+build/
+*/test.cpp
+

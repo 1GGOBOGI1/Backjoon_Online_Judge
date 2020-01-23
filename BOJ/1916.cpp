@@ -11,7 +11,7 @@ int main()
     cin >> N >> M;
 
     //fist = 도착 정점, second = cost
-    vector<pair<int, int>> graph[N + 1];
+    vector<pair<int, int> > graph[N + 1];
 
     for (int i = 0; i < M; i++)
     {
@@ -35,7 +35,7 @@ int main()
     }
 
     d[start] = 0;
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> q;
+    priority_queue<pair<int, int>, vector<pair<int, int> >, greater<pair<int, int> > > q;
     //minheap queue. first = cost, second = vertex
     q.push(make_pair(0, start));
     while (!q.empty())

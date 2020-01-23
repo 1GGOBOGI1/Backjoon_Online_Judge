@@ -24,7 +24,7 @@ int main()
     vector<int> original_num; //1~n까지의 숫자를 오름차순으로 담고있는 벡터
     vector<int> target; //맞춰야할 수열
     stack<int> tmp; //수열을 만들 때 사용할 stack
-    string ans = ""; //정답 출력
+    vector<string> ans; //정답 출력
 
     for (int i = 1; i < n + 1; i++)
         original_num.push_back(i);
@@ -50,7 +50,7 @@ int main()
         if (!tmp.empty() && tmp.top() == target[i])
         {
             tmp.pop();
-            ans += "-\n";
+            ans.push_back("-");
             // cout << "tmp pop" << endl;
             // print_lists(original_num, tmp, point);
         }
@@ -63,7 +63,7 @@ int main()
             {
                 tmp.push(original_num[point]);
                 point++;
-                ans += "+\n";
+                ans.push_back("+");
                 // cout << "tmp push" << endl;
                 // print_lists(original_num, tmp, point);
             }
@@ -72,13 +72,14 @@ int main()
             {
                 tmp.push(original_num[point]);
                 point++;
-                ans += "+\n";
+                ans.push_back("+");
                 // cout << "tmp push" << endl;
                 // print_lists(original_num, tmp, point);
             }
             //tmp의 top에 타겟 숫자가 오면 pop함
-            tmp.pop();
-            ans += "-\n";
+            if (!tmp.empty() && tmp.top() == target[i])
+                tmp.pop();
+            ans.push_back("-");
             // cout << "tmp pop" << endl;
             // print_lists(original_num, tmp, point);
         }
@@ -87,11 +88,13 @@ int main()
         else
         {
             check = false;
-            ans = "NO";
+            ans.clear();
+            ans.push_back("NO");
         }
 
         // cout << "\n\n";
     }
 
-    cout << ans << endl;
+    for (int i = 0; i < ans.size();i++)
+        cout << ans[i] << "\n";
 }

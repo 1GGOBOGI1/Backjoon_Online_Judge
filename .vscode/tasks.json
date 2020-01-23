@@ -1,3 +1,5 @@
+//for windows
+/*
 {
     // tasks.json 형식에 대한 설명서는 
     // https://go.microsoft.com/fwlink/?LinkId=733558의 내용을 참조하세요.
@@ -62,3 +64,47 @@
         }
     ]
 }
+*/
+
+//for macos
+{
+    // tasks.json 형식에 대한 설명서는 
+        // https://go.microsoft.com/fwlink/?LinkId=733558의 내용을 참조하세요.
+        "version": "2.0.0",
+        "runner": "terminal",
+        "type": "shell",
+        "echoCommand": true,
+        "presentation" : { "reveal": "always" },
+        "tasks": [
+            {
+                "type": "shell",
+                "label": "g++ build active file",
+                "command": "/usr/bin/g++",
+                "args": [
+                    "-g",
+                    "${file}",
+                    "-o",
+                    "/Users/kimjuhui/Documents/Algorithm/build/${fileBasenameNoExtension}"
+                ],
+                "options": {
+                    "cwd": "/usr/bin"
+                },
+                "problemMatcher": [
+                    "$gcc"
+                ],
+                "group": {
+                    "kind": "build",
+                    "isDefault": true
+                }
+            },
+            {
+                "label": "execute file",
+                "command": "cd /Users/kimjuhui/Documents/Algorithm/build && ./${fileBasenameNoExtension}",
+                "group": {
+                    "kind":"test",
+                    "isDefault": true
+                }
+            }
+        ]
+    }
+    
