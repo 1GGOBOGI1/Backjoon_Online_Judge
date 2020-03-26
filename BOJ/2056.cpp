@@ -1,3 +1,5 @@
+/*
+// 2019-07-21
 #include<iostream>
 #include<vector>
 #include<queue>
@@ -69,4 +71,74 @@ int main()
     // 완료시간이 가장 큰 것이 정답임
     // 이때, 마지막에 수행한 작업의 완료시간이 정답이 아니라는 것이 중요!
     cout << *max_element(doneTime, doneTime + (N + 1));
+}
+*/
+
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <algorithm>
+using namespace std;
+
+void makeGraph(vector<int> *g, vector<pair<int, int>> &nodeInfo, int V)
+{
+    for (int i = 1; i <= V; i++)
+    {
+        cin >> nodeInfo[i].first >> nodeInfo[i].second;
+
+        for (int j = 0; j < nodeInfo[i].second; j++)
+        {
+            int workNum;
+            cin >> workNum;
+            g[workNum].push_back(i);
+        }
+    }
+}
+
+int ShortestProcessingTime(vector<int> *g, vector<pair<int, int>> &nodeInfo, int V)
+{
+    queue<int> q;
+    vector<int> spendTime(V + 1, 0);
+
+    for (int i = 1; i <= V; i++)
+    {
+        if (nodeInfo[i].second == 0)
+        {
+            q.push(i);
+            spendTime[i] = nodeInfo[i].first;
+        }
+    }
+
+    while (!q.empty())
+    {
+        int now = q.front();
+        q.pop();
+
+        for (int i = 0; i < g[now].size(); i++)
+        {
+            int next = g[now][i];
+            nodeInfo[next].second--;
+
+            if (spendTime[next] < spendTime[now] + nodeInfo[next].first)
+                spendTime[next] = spendTime[now] + nodeInfo[next].first;
+
+            if (nodeInfo[next].second == 0)
+                q.push(next);
+        }
+    }
+
+    return *max_element(spendTime.begin(), spendTime.end());
+}
+
+int main()
+{
+    int N;
+    cin >> N;
+
+    vector<int> graph[N + 1];
+    vector<pair<int, int>> nodeInfo(N + 1); // { first : workTime, second : indegree}
+
+    makeGraph(graph, nodeInfo, N);
+
+    cout << ShortestProcessingTime(graph, nodeInfo, N);
 }

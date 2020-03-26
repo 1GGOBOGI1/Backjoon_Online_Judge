@@ -1,3 +1,6 @@
+/*
+// 2019-07-21
+
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -50,4 +53,68 @@ int main()
                 q.push(y);
         }
     }
+}
+*/
+
+//2020-03-26
+
+#include <iostream>
+#include <vector>
+#include <queue>
+using namespace std;
+
+void makeGraph(vector<int> *graph, vector<int> &indegree, int E)
+{
+    for (int i = 0; i < E; i++)
+    {
+        int A, B;
+        cin >> A >> B;
+
+        graph[A].push_back(B);
+        indegree[B]++;
+    }
+}
+
+void TopologicalSort(vector<int> *g, vector<int> &indegree, int N)
+{
+    queue<int> q;
+    queue<int> answer;
+
+    for (int i = 1; i <= N;i++)
+        if(indegree[i] == 0)
+            q.push(i);
+
+    while(!q.empty())
+    {
+        int now = q.front();
+        q.pop();
+        answer.push(now);
+
+        for (int i = 0; i < g[now].size();i++)
+        {
+            int next = g[now][i];
+            indegree[next]--;
+            if(indegree[next] == 0)
+                q.push(next);
+        }
+    }
+
+    while(!answer.empty())
+    {
+        cout << answer.front() << " ";
+        answer.pop();
+    }
+}
+
+int main()
+{
+    int N, M;
+    cin >> N >> M;
+
+    vector<int> graph[N + 1];
+    vector<int> indegree(N + 1, 0);
+
+    makeGraph(graph, indegree, M);
+
+    TopologicalSort(graph, indegree, N);
 }
