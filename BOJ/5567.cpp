@@ -1,3 +1,4 @@
+/*
 #include<iostream>
 #include<vector>
 #include<queue>
@@ -31,3 +32,52 @@ void dfs(int x,int depth){
 		if (depth<3) dfs(next,depth);
 	}
 }
+*/
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void makeGraph(vector<int> *g,int E)
+{
+	for (int i = 0; i < E;i++)
+	{
+		int a, b;
+		cin >> a >> b;
+
+		g[a].push_back(b);
+		g[b].push_back(a);
+	}
+}
+
+void dfs(vector<int> *graph, bool *check, int now, int depth)
+{
+	depth++;
+	check[now] = true;
+	for (int i = 0; i < graph[now].size();i++)
+	{
+		int next = graph[now][i];
+		if(depth < 3)
+			dfs(graph, check, next, depth);
+	}
+}
+
+int main()
+{
+	int n, m;
+	cin >> n >> m;
+
+	vector<int> graph[n + 1];
+	bool check[n + 1] = {false};
+	int answer = 0;
+
+	makeGraph(graph, m);
+
+	dfs(graph, check, 1, 0);
+
+	for (int i = 2; i <= n;i++)
+		if(check[i] == true)
+			answer++;
+
+	cout << answer;
+}	
