@@ -1,3 +1,5 @@
+//
+/*
 #include<iostream>
 #include<vector>
 #include<queue>
@@ -73,4 +75,78 @@ int main()
 
     for (int i = 1; i < N + 1;i++)
         cout << doneTime[i] << "\n";
+}
+*/
+
+// 2020-03-27
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <algorithm>
+using namespace std;
+
+void makeGraph(vector<int> *g, vector<pair<int, int>> &nodeInfo, int V)
+{
+    for (int i = 1; i <= V; i++)
+    {
+        cin >> nodeInfo[i].first;
+
+        while (1)
+        {
+            int node;
+            cin >> node;
+            if (node == -1)
+                break;
+
+            g[node].push_back(i);
+            nodeInfo[i].second++;
+        }
+    }
+}
+
+void TopologicalSort(int V)
+{
+    vector<int> graph[V + 1];
+    vector<pair<int, int>> nodeInfo(V + 1, make_pair(0, 0)); // { first : time, second : indegree}
+
+    makeGraph(graph, nodeInfo, V);
+
+    queue<int> q;
+    int spendTime[V + 1] = {0};
+
+    for (int i = 1; i <= V; i++)
+    {
+        if (nodeInfo[i].second == 0)
+        {
+            q.push(i);
+            spendTime[i] = nodeInfo[i].first;
+        }
+    }
+
+    while (!q.empty())
+    {
+        int now = q.front();
+        q.pop();
+
+        for (int i = 0; i < graph[now].size(); i++)
+        {
+            int next = graph[now][i];
+            if (spendTime[next] < spendTime[now] + nodeInfo[next].first)
+                spendTime[next] = spendTime[now] + nodeInfo[next].first;
+
+            if ((--nodeInfo[next].second) == 0)
+                q.push(next);
+        }
+    }
+
+    for (int i = 1; i <= V;i++)
+        cout << spendTime[i] << "\n";
+}
+
+int main()
+{
+    int N;
+    cin >> N;
+
+    TopologicalSort(N);
 }
