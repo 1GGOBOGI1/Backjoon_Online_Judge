@@ -29,26 +29,6 @@ struct cmp
     }
 };
 
-/*
-struct sortByLocation
-{
-    int _case;
-    sortByLocation(int input) { this->_case = input; }
-
-    bool operator()(location a, location b){
-        switch (_case)
-        {
-        case 0:
-            return a.x > b.x;
-            break;
-        case 1:
-            return a.y > b.y;
-            break;
-        }
-    }
-};
-*/
-
 struct DisjointSet
 {
     vector<int> parent, height;
@@ -104,23 +84,14 @@ void makeEdges(priority_queue<edge, vector<edge>, cmp> &q, DisjointSet &set,vect
 
         set.merge(u-1, v-1);
     }
-    /*
-    for (int i = 0; i < 2;i++)
-    {
-        sort(spaceGod.begin(), spaceGod.end(), sortByLocation(i));
 
-        for (int j = 1; j < spaceGod.size();j++)
+    for (int i = 0; i < spaceGod.size();i++)
+    {
+        for (int j = i+1; j < spaceGod.size();j++)
         {
-            edge e(spaceGod[j - 1], spaceGod[j]);
+            edge e(spaceGod[i], spaceGod[j]);
             q.push(e);
         }
-    }
-    */
-
-    for (int i = 1; i < spaceGod.size();i++)
-    {
-        edge e(spaceGod[i - 1], spaceGod[i]);
-        q.push(e);
     }
 }
 
@@ -162,11 +133,7 @@ int main()
     setLocation(spaceGod, N);
     makeEdges(q, set,spaceGod,M);
 
-    /*
     cout << fixed;
     cout.precision(2);
     cout << round(Kruscal(q, set)*100)/100;
-    */
-    long double answer = Kruscal(q, set);
-    printf("%.2lf\n", answer);
 }
