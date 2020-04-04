@@ -1,60 +1,81 @@
 #include <iostream>
 #include <vector>
 #include <queue>
-#define INF 999999
 using namespace std;
+
+struct edge
+{
+    int u, v, c;
+};
+
+struct dij
+{
+    int distance = -1;
+    int prevNode = -1;
+    bool check = false;
+};
+
+struct cmp
+{
+    bool operator()(edge a, edge b)
+    {
+        return a.c > b.c;
+    }
+};
+
+void makeGraph(vector<edge> *graph, int E)
+{
+    for (int i = 0; i < E; i++)
+    {
+        edge e;
+        cin >> e.u >> e.v >> e.c;
+        graph[e.u].push_back(e);
+    }
+}
+
+void Dijkstra(vector<edge> *graph, int V)
+{
+    int start, end;
+    cin >> start >> end;
+    priority_queue<edge, vector<edge>, cmp> q;
+
+    vector<dij> arr(V + 1);
+
+    arr[start].distance = 0;
+    arr[start].check = true;
+
+    for (int i = 0; i < graph[start].size(); i++)
+        q.push(graph[start][i]);
+
+    while(!q.empty())
+    {
+        edge e = q.top();
+        q.pop();
+
+        if(arr[e.v].check)
+            continue;
+        
+        if(arr[e.v].distance < arr[e.u].distance + e.c)
+        {
+            arr[e.v].distance = arr[e.u].distance + e.c;
+            arr[e.v].prevNode = e.u;
+            arr[e.v].check = true;
+
+            for (int i = 0; i < graph[e.v].size();i++)
+                q.push(graph[e.v][i]);
+        }
+    }
+
+    cout << arr[end].distance << "\n";
+}
 
 int main()
 {
-    // N = 도시 개수, M = 버스의 개수
     int N, M;
     cin >> N >> M;
 
-    //fist = 도착 정점, second = cost
-    vector<pair<int, int> > graph[N + 1];
+    vector<edge> graph[N + 1];
 
-    for (int i = 0; i < M; i++)
-    {
-        int from, to, cost;
-        cin >> from >> to >> cost;
-
-        //무방향 그래프
-        graph[from].push_back(make_pair(to, cost));
-    }
-
-    int start, end;
-    cin >> start >> end;
-
-    int d[N + 1];
-    bool c[N + 1];
-
-    for (int i = 1; i < N + 1; i++)
-    {
-        d[i] = INF;
-        c[i] = false;
-    }
-
-    d[start] = 0;
-    priority_queue<pair<int, int>, vector<pair<int, int> >, greater<pair<int, int> > > q;
-    //minheap queue. first = cost, second = vertex
-    q.push(make_pair(0, start));
-    while (!q.empty())
-    {
-        int x = q.top().second;
-        q.pop();
-        if (!c[x])
-        {
-            c[x] = true;
-            for (int i = 0; i < graph[x].size(); i++)
-            {
-                int y = graph[x][i].first;
-                if (d[y] > d[x] + graph[x][i].second)
-                {
-                    d[y] = d[x] + graph[x][i].second;
-                    q.push(make_pair(d[y], y));
-                }
-            }
-        }
-    }
-    cout << d[end] << endl;
+    makeGraph(graph, M);
+    Dijkstra(graph, N);
 }

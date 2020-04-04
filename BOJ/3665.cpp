@@ -143,11 +143,12 @@ void modifyGraph(vector<int> *graph, vector<int> &indegree, int *lastYear)
     int m;
     cin >> m;
 
+    cout << "m = " << m << "\n";
     for (int i = 0; i < m;i++)
     {
         int a, b;
         cin >> a >> b;
-
+        cout << "a = " << a << "b = " << b << "\n";
         if(lastYear[a]<lastYear[b])
             swap(a, b);
         
