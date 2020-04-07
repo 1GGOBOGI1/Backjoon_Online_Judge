@@ -47,7 +47,7 @@ void makeGraph(vector<int> *node, int *level, int *parent, int V)
     BFS(node, V, level, parent, 1);
 }
 
-int LCS(vector<int> *node, int *level, int *parent, int u, int v)
+int LCA(vector<int> *node, int *level, int *parent, int u, int v)
 {
     if (u == v)
         return u;
@@ -67,7 +67,7 @@ int LCS(vector<int> *node, int *level, int *parent, int u, int v)
     }
 
     if (u != -1 && v != -1)
-        return LCS(node, level, parent, u, v);
+        return LCA(node, level, parent, u, v);
     else
         return -1;
 }
@@ -89,6 +89,6 @@ int main()
     {
         int u, v;
         cin >> u >> v;
-        cout << LCS(node, level, parent, u, v) << "\n";
+        cout << LCA(node, level, parent, u, v) << "\n";
     }
 }
