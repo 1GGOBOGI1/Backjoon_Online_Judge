@@ -3,72 +3,105 @@
 #include <queue>
 using namespace std;
 
-int lca(int u, int v, int *depth, int *parent, bool *check, int *cost)
+struct edge
 {
-    int weight = 0;
-    if (depth[u] < depth[v])
-        swap(u, v);
-    while (depth[u] != depth[v])
+    int v, c;
+};
+
+void BFS(vector<edge> *node, int *depth, int (*parent)[2], int V, int start)
+{
+    queue<int> q;
+    bool check[V + 1] = {false};
+
+    check[start] = true;
+    parent[start][0] = -1;
+    parent[start][1] = 0;
+    depth[start] = 0;
+    q.push(start);
+
+    while(!q.empty())
     {
-        weight += cost[u];
-        u = parent[u];
+        int now = q.front();
+        q.pop();
+
+        for (int i = 0; i < node[now].size();i++)
+        {
+            int next = node[now][i].v;
+            if(!check[next])
+            {
+                check[next] = true;
+                parent[next][0] = now;
+                parent[next][1] = node[now][i].c;
+                depth[next] = depth[now] + 1;
+                q.push(next);
+            }
+        }
     }
-    while (u != v)
+}
+
+void makeGraph(vector<edge> *node, int *depth, int (*parent)[2],int V)
+{
+    int E = V - 1;
+    while(E--)
     {
-        weight = weight+ (cost[u] + cost[v]);
-        u = parent[u];
-        v = parent[v];
+        int u, v, c;
+        cin >> u >> v >> c;
+        edge e1;
+        e1.v = v;
+        e1.c = c;
+        node[u].push_back(e1);
+        edge e2;
+        e2.v = u;
+        e2.c = c;
+        node[v].push_back(e2);
     }
-    return weight;
+
+    BFS(node, depth, parent, V, 1);
+}
+
+int getDiameter(int *depth, int (*parent)[2], int u, int v)
+{
+    int distance_u = 0;
+    int distance_v = 0;
+    while(depth[u] > depth[v])
+    {
+        distance_u += parent[u][1];
+        u = parent[u][0];
+    }
+    
+    while(depth[u] < depth[v])
+    {
+        distance_v += parent[v][1];
+        v = parent[v][0];
+    }
+
+    while(u != v)
+    {
+        distance_u += parent[u][1];
+        u = parent[u][0];
+        distance_v += parent[v][1];
+        v = parent[v][0];
+    }
+    return distance_u + distance_v;
 }
 
 int main()
 {
     int N;
     cin >> N;
-    vector<pair<int, int>> tree[N + 1];
-    int depth[N + 1];
-    int parent[N + 1];
-    int cost[N + 1];
-    bool check[N + 1];
 
-    for (int i = 1; i < N; i++)
-    {
-        int u, v, w;
-        cin >> u >> v >> w;
-        tree[u].push_back(make_pair(v, w));
-        tree[v].push_back(make_pair(u, w));
-    }
+    vector<edge> node[N + 1];
+    int depth[N + 1] = {0};
+    int parent[N + 1][2] = {0};
 
-    depth[1] = 0;
-    check[1] = true;
-    cost[1] = 0;
-
-    queue<int> q;
-    q.push(1);
-    while (!q.empty())
-    {
-        int x = q.front();
-        q.pop();
-        for (pair<int, int> y : tree[x])
-        {
-            if (!check[y.first])
-            {
-                depth[y.first] = depth[x] + 1;
-                check[y.first] = true;
-                cost[y.first] = y.second;
-                parent[y.first] = x;
-                q.push(y.first);
-            }
-        }
-    }
+    makeGraph(node, depth, parent, N);
 
     int M;
     cin >> M;
-    while (M--)
+    while(M--)
     {
-        int a, b;
-        cin >> a >> b;
-        cout << lca(a, b, depth, parent, check, cost)<<"\n";
+        int u, v;
+        cin >> u >> v;
+        cout << getDiameter(depth, parent, u, v)<<"\n";
     }
 }
