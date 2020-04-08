@@ -59,7 +59,7 @@ void makeGraph(vector<edge> *node, int *depth, int (*parent)[2],int V)
     BFS(node, depth, parent, V, 1);
 }
 
-int getDiameter(int *depth, int (*parent)[2], int u, int v)
+int LCA(int *depth, int (*parent)[2], int u, int v)
 {
     int distance_u = 0;
     int distance_v = 0;
@@ -102,6 +102,6 @@ int main()
     {
         int u, v;
         cin >> u >> v;
-        cout << getDiameter(depth, parent, u, v)<<"\n";
+        cout << LCA(depth, parent, u, v)<<"\n";
     }
 }
