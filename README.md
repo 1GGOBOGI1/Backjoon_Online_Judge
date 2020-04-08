@@ -11,5 +11,5 @@
 |3|[1991번 : 트리 순회](https://www.acmicpc.net/problem/1991)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1991.cpp)|1. preOrder, inOrder, postOrder 기본<br>2. 출력 시 `static_cast<type>` 사용|
 |4|[11725번 : 트리의 부모 찾기](https://www.acmicpc.net/problem/11725)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/11725.cpp)|BFS 탐색|
 |5|[1167번 : 트리의 지름](https://www.acmicpc.net/problem/1167)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1167.cpp)|트리 지름 구하는 방법 - BFS 2번 돌리기|
-|6|[11437 : LCA](https://www.acmicpc.net/problem/11437)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/11437.cpp)|1. BFS를 이용하여 depth, parent 구해놓기<br>2. LCA|
-
+|6|[11437번 : LCA](https://www.acmicpc.net/problem/11437)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/11437.cpp)|1. BFS를 이용하여 depth, parent 구해놓기<br>2. LCA|
+|7|[1761번 : 정점들의 거리](https://www.acmicpc.net/problem/1761)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1761.cpp)|LCA 구하기|
