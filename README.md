@@ -3,7 +3,6 @@
 ## Backjoon Online Judge
 
 
-
 |#|Title|Solution|Basic idea (One line)|
 |:---|:---|:---|:---|
 |1|[11724 연결 요소의 개수](https://www.acmicpc.net/group/board/view/7680/16582)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/11724.cpp)|아직 방문하지 않은 정점에 대하여 BFS 탐색 O(V+E)|
@@ -14,3 +13,13 @@
 |6|[11437번 : LCA](https://www.acmicpc.net/problem/11437)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/11437.cpp)|1. BFS를 이용하여 depth, parent 구해놓기<br>2. LCA|
 |7|[1761번 : 정점들의 거리](https://www.acmicpc.net/problem/1761)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1761.cpp)|LCA 구하기|
 |8|[11438번 : LCA 2](https://www.acmicpc.net/problem/11438)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/11438.cpp)|LCA binary lifting|
+|9|[1967번 : 트리의 지름](https://www.acmicpc.net/problem/1967)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1967.cpp)|트리 지름 구하기 - BFS 2번|
+|10|[2250번 : 트리의 높이와 너비](https://www.acmicpc.net/problem/2250)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/2250.cpp)|루트는 부모가 없다|
+
+
+### 시도했으나 아직 풀지 못한 문제
+
+
+|#|Title|Solution|
+|:---|:---|:---|
+|1|[3176번 : 도로 네트워크](https://www.acmicpc.net/problem/3176)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/3176.cpp)|
