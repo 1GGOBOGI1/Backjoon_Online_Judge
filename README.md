@@ -2,6 +2,7 @@
 
 ## Backjoon Online Judge
 
+### 푼 문제
 
 |#|Title|Solution|Basic idea (One line)|
 |:---|:---|:---|:---|
@@ -15,11 +16,15 @@
 |8|[11438번 : LCA 2](https://www.acmicpc.net/problem/11438)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/11438.cpp)|LCA binary lifting|
 |9|[1967번 : 트리의 지름](https://www.acmicpc.net/problem/1967)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1967.cpp)|트리 지름 구하기 - BFS 2번|
 |10|[2250번 : 트리의 높이와 너비](https://www.acmicpc.net/problem/2250)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/2250.cpp)|루트는 부모가 없다|
+|11|[1068번 : 트리](https://www.acmicpc.net/problem/1068)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1068.cpp)|트리의 특정 노드 삭제|
+|12|[5639번: 이진 검색 트리](https://www.acmicpc.net/problem/5639)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/5639.cpp)|BST addNode, postOrder 구현|
+|13|[3176번: 도로 네트워크](https://www.acmicpc.net/problem/3176)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/3176.cpp)|LCA Binary Lifting 하면서 min max distance 구하기|
+|14|[9237번: 이장님 초대](https://www.acmicpc.net/problem/9237)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/9237.cpp)|덧셈 문제|
 
 
 ### 시도했으나 아직 풀지 못한 문제
 
 
-|#|Title|Solution|
+|When|Title|Solution|
 |:---|:---|:---|
-|1|[3176번 : 도로 네트워크](https://www.acmicpc.net/problem/3176)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/3176.cpp)|
+|`2020-04-09`|[2213번 : 트리의 독립집합](https://www.acmicpc.net/problem/2213)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/2213.cpp)|
