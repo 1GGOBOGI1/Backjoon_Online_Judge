@@ -17,10 +17,13 @@
 |9|[1967번 : 트리의 지름](https://www.acmicpc.net/problem/1967)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1967.cpp)|트리 지름 구하기 - BFS 2번|
 |10|[2250번 : 트리의 높이와 너비](https://www.acmicpc.net/problem/2250)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/2250.cpp)|루트는 부모가 없다|
 |11|[1068번 : 트리](https://www.acmicpc.net/problem/1068)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1068.cpp)|트리의 특정 노드 삭제|
-|12|[5639번: 이진 검색 트리](https://www.acmicpc.net/problem/5639)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/5639.cpp)|BST addNode, postOrder 구현|
-|13|[3176번: 도로 네트워크](https://www.acmicpc.net/problem/3176)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/3176.cpp)|LCA Binary Lifting 하면서 min max distance 구하기|
-|14|[9237번: 이장님 초대](https://www.acmicpc.net/problem/9237)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/9237.cpp)|덧셈 문제|
-
+|12|[5639번 : 이진 검색 트리](https://www.acmicpc.net/problem/5639)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/5639.cpp)|BST addNode, postOrder 구현|
+|13|[3176번 : 도로 네트워크](https://www.acmicpc.net/problem/3176)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/3176.cpp)|LCA Binary Lifting 하면서 min max distance 구하기|
+|14|[9237번 : 이장님 초대](https://www.acmicpc.net/problem/9237)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/9237.cpp)|덧셈 문제|
+|15|[1927번 : 최소 힙](https://www.acmicpc.net/problem/1927)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1927.cpp)|1. 최소 힙 구현<br>2. `^`는 비트 연산자임. 제곱승은 `pow`로 계산|
+|16|[11279번 : 최대 힙](https://www.acmicpc.net/problem/11279)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/11279.cpp)|최대 힙 구현|
+|17|[11286번 : 절댓값 힙](https://www.acmicpc.net/problem/11286)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/11286.cpp)|최소 힙 응용|
+|18|[1655번 : 가운데를 말해요](https://www.acmicpc.net/problem/1655)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1655.cpp)|최대 힙, 최소 힙 사용|
 
 ### 시도했으나 아직 풀지 못한 문제
 
