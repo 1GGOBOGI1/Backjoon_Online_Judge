@@ -1,49 +1,171 @@
 #include <iostream>
-#include <vector>
 #include <algorithm>
-#include <cstdlib>
-#include <set>
+#include <vector>
 using namespace std;
 
-bool compare(const pair<int, int> &v1, const pair<int, int> &v2)
+struct jewel
 {
-    //가격이 많이 나가는 애가 앞으로
-    //가격이 같다면 무게가 많이 나가는 애가 앞으로
-    if (v1.second == v2.second)
-        return v1.first > v2.first;
-    return v1.second > v2.second;
+    int weight, price;
+};
+
+struct JewelMaxHeap
+{
+    vector<jewel> heap;
+    int count;
+
+    JewelMaxHeap(int n) : heap(n + 1), count(0){};
+
+    void push(jewel input)
+    {
+        heap[++count] = input;
+
+        for (int i = count; i != 1 && heap[i].price > heap[i / 2].price; i = i / 2)
+            swap(heap[i], heap[i / 2]);
+    }
+
+    jewel pop()
+    {
+        jewel front = heap[1];
+
+        swap(heap[1], heap[count--]);
+
+        for (int i = 1; i * 2 <= count;)
+        {
+            if (heap[i].price > heap[i * 2].price)
+            {
+                if (i * 2 + 1 <= count)
+                {
+                    if (heap[i].price > heap[i * 2 + 1].price)
+                        break;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            if (i * 2 + 1 <= count && heap[i * 2].price < heap[i * 2 + 1].price)
+            {
+                swap(heap[i], heap[i * 2 + 1]);
+                i = i * 2 + 1;
+            }
+            else
+            {
+                swap(heap[i], heap[i * 2]);
+                i = i * 2;
+            }
+        }
+        return front;
+    }
+
+    jewel top()
+    {
+        return heap[1];
+    }
+
+    bool empty()
+    {
+        if (count == 0)
+            return true;
+        return false;
+    }
+};
+
+struct MinHeap
+{
+    vector<int> heap;
+    int count;
+
+    MinHeap(int n) : heap(n + 1), count(0) {}
+
+    void push(int input)
+    {
+        heap[++count] = input;
+
+        for (int i = count; i != 1 && heap[i] < heap[i / 2]; i = i / 2)
+            swap(heap[i], heap[i / 2]);
+    }
+
+    int pop()
+    {
+        int front = heap[1];
+        swap(heap[1], heap[count--]);
+
+        for (int i = 1; i * 2 <= count;)
+        {
+            if (heap[i] < heap[i * 2])
+            {
+                if (i * 2 + 1 <= count)
+                {
+                    if (heap[i] < heap[i * 2 + 1])
+                        break;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            if (i * 2 + 1 <= count && heap[i * 2] > heap[i * 2 + 1])
+            {
+                swap(heap[i], heap[i * 2 + 1]);
+                i = i * 2 + 1;
+            }
+            else
+            {
+                swap(heap[i], heap[i * 2]);
+                i = i * 2;
+            }
+        }
+
+        return front;
+    }
+
+    int top()
+    {
+        return heap[1];
+    }
+};
+
+bool cmp(const jewel &a, const jewel &b)
+{
+    if (a.weight < b.weight)
+        return true;
+    return false;
 }
 
 int main()
 {
-    vector<pair<int, int>> dia(300000); //<무게, 가격>
-    multiset<int> bag;                  //insert할때 자동정렬하면서 시간 줄이려고 multiset 사용
-    int N, K, tmp;
-    unsigned int ans = 0;
+    int N, K;
+    scanf("%d %d", &N, &K);
 
-    scanf("%d %d", &N, &K); //scanfㅠㅠ...scanf도 썼는데...!
+    vector<jewel> shop(N + 1);
+    for (int i = 1; i <= N; i++)
+        scanf("%d %d", &shop[i].weight, &shop[i].price);
 
-    for (int i = 0; i < N; i++)
-        scanf("%d %d", &dia[i].first, &dia[i].second);
-    for (int i = 0; i < K; i++)
+    sort(shop.begin(), shop.end(), cmp);
+
+    MinHeap bag(K);
+    for (int i = 1; i <= K; i++)
     {
-        scanf("%d", &tmp);
-        bag.insert(tmp);
+        int input;
+        scanf("%d", &input);
+        bag.push(input);
+
     }
 
-    sort(dia.begin(), dia.end(), compare); //가격 많이 나가는 놈부터 찾으려고 sort
+    long long ans = 0;
+    JewelMaxHeap jeweles(N);
 
-    for (int i = 0; (i < N) && (K > 0); i++)
+    for (int i = 1, j = 1; j <= K; j++)
     {
-        //현재 보석 무게보다 같거나 큰 수 중 가장 작은 수를 가진 가방 무게 주소 찾음
-        auto addr = lower_bound(bag.begin(), bag.end(), dia[i].first);
-        //lower_bound에 해당하는 값이 없으면 addr = bag.end()되니까 거름
-        if (addr != bag.end())
-        {
-            ans += dia[i].second;
-            bag.erase(addr);
-            K--;
-        }
+        int weightLimit = bag.pop();
+        while (i <= N && shop[i].weight <= weightLimit)
+            jeweles.push(shop[i++]);
+
+        if (!jeweles.empty())
+            ans += jeweles.pop().price;
     }
-    printf("%d", ans);
+
+    printf("%lld", ans);
 }
