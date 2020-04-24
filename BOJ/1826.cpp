@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include <vector>
 #include <queue>
@@ -115,4 +116,78 @@ int main()
     }
 
     movingDistance >= L ? printf("%d", ans) : printf("%d",-1);
+}
+
+*/
+
+#include <iostream>
+#include <queue>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+struct GasStation
+{
+    int distance, amount;
+
+    GasStation(int d, int a) : distance(d), amount(a) {}
+};
+
+bool compare(const GasStation &a, const GasStation &b)
+{
+    if (a.distance < b.distance)
+        return true;
+    return false;
+}
+
+int main()
+{
+    int N;
+    scanf("%d", &N);
+
+    vector<GasStation> gasStation;
+
+    for (int i = 0; i < N; i++)
+    {
+        int a, b;
+        scanf("%d %d", &a, &b);
+        gasStation.push_back(GasStation(a, b));
+    }
+
+    sort(gasStation.begin(), gasStation.end(), compare);
+
+    int L;
+    long long P;
+    int ans = 0;
+    cin >> L >> P;
+
+    priority_queue<int> q;
+
+    for (int i = 0; P < L;)
+    {
+
+        while(i < N && gasStation[i].distance <= P)
+        {
+            q.push(gasStation[i++].amount);
+        }
+        
+        if(!q.empty())
+        {
+            ans++;
+            P += q.top();
+            q.pop();
+        }
+        else
+        {
+            break;
+        }
+        
+    }
+
+        if (P < L)
+            printf("-1");
+        else
+        {
+            printf("%d", ans);
+        }
 }
