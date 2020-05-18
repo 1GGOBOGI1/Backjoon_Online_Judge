@@ -38,6 +38,7 @@
 |31|[2660번 : 회장 뽑기](https://www.acmicpc.net/problem/2660))|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/2660.cpp)|BFS 이용해서 노드의 깊이 재기|
 |32|[11812번 : K진 트리](https://www.acmicpc.net/problem/11812))|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/11812.cpp)|K진 트리 공식 이용|
 |33|[13251번 : 조약돌 꺼내기](https://www.acmicpc.net/problem/13251))|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/13251.cpp)|소수점 계산 주의|
+|34|[1697번 : 숨바꼭질](https://www.acmicpc.net/problem/1697))|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1697.cpp)|큐를 이용한 완전탐색|
 
 
 ### 시도했으나 아직 풀지 못한 문제
