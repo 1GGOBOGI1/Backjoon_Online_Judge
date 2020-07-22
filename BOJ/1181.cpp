@@ -1,3 +1,4 @@
+/*
 #include <iostream>
 #include <algorithm>
 #include <vector>
@@ -30,4 +31,41 @@ int main()
 
     for(int i=0;i<input.size();i++)
         cout<<input[i]<<endl;
+}
+
+*/
+
+#include <iostream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+
+bool compare(string a, string b)
+{
+    if(a.size() < b.size())
+        return true;
+    else if(a.size() == b.size())
+        return a < b;
+    return false;
+}
+
+int main()
+{
+    int N;
+    scanf("%d", &N);
+    
+    vector<string> str(N);
+    
+    for(int i = 0; i < N; i++)
+        cin >> str[i];
+        
+        
+    
+    sort(str.begin(), str.end(), compare);
+    str.erase(unique(str.begin(), str.end()),str.end());
+    
+    
+    for(int i = 0; i < str.size(); i++)
+        cout<<str[i]<<"\n";    
+    
 }
