@@ -39,10 +39,21 @@
 |32|[11812번 : K진 트리](https://www.acmicpc.net/problem/11812))|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/11812.cpp)|K진 트리 공식 이용|
 |33|[13251번 : 조약돌 꺼내기](https://www.acmicpc.net/problem/13251))|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/13251.cpp)|소수점 계산 주의|
 |34|[1697번 : 숨바꼭질](https://www.acmicpc.net/problem/1697))|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1697.cpp)|큐를 이용한 완전탐색|
+|35|[9019번 : DSLR](https://www.acmicpc.net/problem/9019))|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/9019.cpp)|큐를 이용한 완전탐색|
+|36|[1727번 : 커플 만들기](https://****www****.acmicpc.net/problem/1727))|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1727.cpp)|DP|
+|37|[1525번 : 퍼즐](https://www.acmicpc.net/problem/1525))|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1525.cpp)|큐를 이용한 완전탐색|
+|38|[1717번 : 집합의 표현](https://www.acmicpc.net/problem/1717))|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/1717.cpp)|유니온 파인드|
+|39|[9251번 : LCS](https://www.acmicpc.net/problem/9251)|[C++](https://github.com/kjh107704/Algorithm/blob/master/BOJ/9251.cpp)|LCS|
+
+
+### 미래에 다시 풀어봐야 할 문제
+
+|#|Title|
+|:---|:---|
+
 
 
 ### 시도했으나 아직 풀지 못한 문제
-
 
 |When|Title|Solution|
 |:---|:---|:---|

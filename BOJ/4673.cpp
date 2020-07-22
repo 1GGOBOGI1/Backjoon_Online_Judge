@@ -1,3 +1,5 @@
+/*
+
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -36,4 +38,49 @@ int main()
     for (int i = 1; i < 10001; i++)
         if (selfnumber[i])
             cout << i << "\n";
+}
+
+*/
+
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+void checkSelfNumber(bool * isSelfNumber, int index)
+{
+    if(index > 10001)
+        return;
+
+    int num = index;
+
+    while(index != 0)
+    {
+        num += index % 10;
+
+        index /= 10;
+    }
+
+    if(num > 10001)
+        return;
+
+    if(!isSelfNumber[num])
+        return;
+
+    isSelfNumber[num] = false;
+    checkSelfNumber(isSelfNumber, num);
+}
+
+int main()
+{
+    bool isSelfNumber[10001];
+
+    memset(isSelfNumber,true, sizeof(isSelfNumber));
+
+    for (int i = 1; i < 10001; i++)
+        if(isSelfNumber[i])
+            checkSelfNumber(isSelfNumber, i);
+
+    for (int i = 1; i < 10001; i++)
+        if(isSelfNumber[i])
+            printf("%d\n", i);
 }

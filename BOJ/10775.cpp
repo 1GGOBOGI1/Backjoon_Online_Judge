@@ -4,76 +4,73 @@ using namespace std;
 
 struct UnionFind
 {
-    vector<int> gate, rank;
-    int num;
-
-    UnionFind(int n) : gate(n+1), rank(n+1,1)
+    vector<int> parent, rank;
+    UnionFind(int n) : parent(n + 1), rank(n + 1, 1)
     {
-        num = 0;
-
         for (int i = 0; i <= n; i++)
-        {
-            gate[i] = i;
-        }
+            parent[i] = i;
     }
 
-    int find(int n)
+    int Find(int v)
     {
-        if(n == gate[n])
-            return n;
+        if (v == parent[v])
+            return v;
 
-        return gate[n] = find(gate[n]);
+        return parent[v] = Find(parent[v]);
     }
 
-    int docking(int i)
+    void Merge(int u, int v)
     {
-        int flag;
-        do
-        {
-            flag = find(i);
-            i = i - 1;
-            if(i < 0)
-                break;
-        } while (flag == 0);
+        u = Find(u);
+        v = Find(v);
 
-        if(flag == 0)
-        {
-            //cout << "fail to docking\n";
-            return -1;
-        }
-        else
-        {
-            //cout << "gate " << i+1 << " is open\n";
-            gate[i+1] = 0;
-            num++;
-            return 0;
-        }
+        if (u == v)
+            return;
+
+        if (u < v)
+            swap(u, v);
+
+        // always u > v
+        parent[u] = v;
+        return;
     }
 
-    int numOfPlanes()
+    bool Docking(int v)
     {
-        return num;
+        v = Find(v);
+
+        if (v == 0)
+            return false;
+
+        Merge(v, v - 1);
+        return true;
     }
 };
 
-int main()
+int solution(int G, int P, vector<int> &plane)
 {
-    int G, P, input;
-
     UnionFind uf(G);
 
-    cin >> G >> P;
-
-    for (int i = 0; i < P;i++)
+    for (int i = 0; i < P; i++)
     {
-        cin >> input;
-        if(uf.docking(input) == -1)
-        {
-            //cout << "airport closed!";
-            cout << uf.numOfPlanes();
-            return 0;
-        }
+        if (!uf.Docking(plane[i]))
+            return i;
     }
 
-    cout << uf.numOfPlanes();
+    return P;
+}
+
+int main()
+{
+    int G, P;
+
+    scanf("%d", &G);
+    scanf("%d", &P);
+
+    vector<int> plane(P, 0);
+
+    for (int i = 0; i < P; i++)
+        scanf("%d", &plane[i]);
+
+    printf("%d", solution(G, P, plane));
 }

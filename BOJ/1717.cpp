@@ -40,16 +40,14 @@ struct UnionFind
 
 int main()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(NULL);
     int n, m, p, a, b;
-    cin >> n >> m;
+    scanf("%d %d", &n, &m);
 
     UnionFind uf(n);
 
     for (int i = 0; i < m;i++)
     {
-        cin >> p >> a >> b;
+        scanf("%d %d %d", &p, &a, &b);
 
         if(p == 0)
             uf.merge(a, b);

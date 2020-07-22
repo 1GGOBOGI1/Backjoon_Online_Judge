@@ -1,47 +1,79 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 using namespace std;
 
 struct DisjointSet
 {
-    vector<int> group;
+    vector<int> parent, distanceToParent;
 
-    DisjointSet(int n) : group(n+1) {
-        for (int i = 1; i <= n;i++)
-            group[i] = i;
+    DisjointSet(int n) : parent(n + 1), distanceToParent(n + 1, 0)
+    {
+        for (int i = 1; i <= n; i++)
+            parent[i] = i;
     }
 
     int find(int u)
     {
-        if(u == group[u])
+        if(u == parent[u])
             return u;
 
-        return group[u] = find(group[u]);
+        int _parent = find(parent[u]);
+        distanceToParent[u] += distanceToParent[parent[u]];
+        parent[u] = _parent;
+
+        return _parent;
     }
 
-    int merge(int a, int b)
+
+    void merge(int I, int J)
     {
-        a = find(a);
-        b = find(b);
+        parent[I] = J;
+        distanceToParent[I] = abs(I - J) % 1000;
+    }
 
-        if(a == b)
-            return;
-
-        group[a] = b;
+    int getDistance(int node)
+    {
+        find(node);
+        return distanceToParent[node];
     }
 };
+
+void solution(int N)
+{
+    DisjointSet ds(N);
+
+    char command;
+
+    int I, J;
+    do
+    {
+        scanf("%c", &command);
+
+        switch (command)
+        {
+        case 'E':
+            scanf("%d", &I);
+            printf("%d\n", ds.getDistance(I));
+            break;
+        case 'I':
+            scanf("%d %d", &I, &J);
+            ds.merge(I, J);
+            break;
+        }
+    } while (command != 'O');
+}
 
 int main()
 {
     int T;
     cin >> T;
 
-    while(T--)
+    while (T--)
     {
         int N;
         cin >> N;
 
-        vector<int> graph[N + 1];
-        int center = 0;
+        solution(N);
     }
 }
