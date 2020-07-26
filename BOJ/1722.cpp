@@ -12,11 +12,6 @@ long long getGroupNumber(long long k, long long fac)
     return group;
 }
 
-long long getRemainK(long long k, long long fac, long long groupNum)
-{
-    return k - (fac * groupNum);
-}
-
 void getSequence(long long N, long long k)
 {
     vector<long long> base(N);
