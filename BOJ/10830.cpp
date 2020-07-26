@@ -27,7 +27,7 @@ vector<vector<long long>> multiplication(vector<vector<long long >> &A, vector<v
     return C;
 }
 
-vector<vector<long long>> calc(vector<vector<long long>> &A, int B, int N)
+vector<vector<long long>> calc(vector<vector<long long>> &A, long long B, int N)
 {
     if(B == 0)
     {
@@ -58,8 +58,9 @@ vector<vector<long long>> calc(vector<vector<long long>> &A, int B, int N)
 
 int main()
 {
-    int N, B;
-    scanf("%d %d", &N, &B);
+    int N;
+    long long B;
+    scanf("%d %lld", &N, &B);
 
     vector<vector<long long>> A(N, vector<long long>(N, 0));
 
